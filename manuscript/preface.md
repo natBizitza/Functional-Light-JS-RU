@@ -1,48 +1,48 @@
-# Functional-Light JavaScript
-# Preface
+# Функционально-легкий JavaScript
+# Предисловие
 
-> *A monad is just a monoid in the category of endofunctors.*
+> *Монада - просто моноид в категории эндофункторов.*
 
-Did I just lose you? Don't worry, I'd be lost, too! All those terms that only mean something to the already-initiated in Functional Programming&trade; (FP) are just jumbled nonsense to many of the rest of us.
+Вы только что растерялись, верно? Не переживайте, я был таким же растерянным, когда увидел это впервые! Все эти термины имеют какое-то значение только для тех, кто уже знаком с Функциональным Программированием&trade; (FP), и являются просто набором звуков для всех остальных.
 
-This book is not going to teach you what those words mean. If that's what you're looking for, keep looking. In fact, there are already plenty of great books that teach FP the *right way*, from the top-down. Those words have important meanings and if you formally study FP in-depth, you'll absolutely want to get familiar with them.
+Эта книга не ставит своей целью научить читателя значению этих слов. Если это то, что вы хотите узнать - лучше попробовать поискать в другом месте. На самом деле, уже написано множество прекрасных книг, обучающих функциональному программированию в "правильном стиле". И конечно, эти термины исполнены смысла, так что, если вы занимаетесь глубоким формальным изучением функционального программирования, вы абсолютно обязаны разобраться в их значении.
 
-But this book is going to approach the topic quite differently. I'm going to present fundamental FP concepts from the ground-up, with fewer special or non-intuitive terms than most approaches to FP. We'll try to take a practical approach to each principle rather than a purely academic angle. **There will be terms**, no doubt. But we'll be careful and deliberate about introducing them and explaining why they're important.
+Но эта книга подходит к вопросу с другой стороны. Я собираюсь представить вам фундаментальные концепции ФП, подходя к ним с практической стороны, используя минимум специализированной и неинтуитивной терминологии.  **Термины тоже будут**, не переживайте. Но мы будет подходить к ним последовательно и осторожно, сопровождая их введение подробным обсуждением и разъяснением важности.
 
-Sadly, I am not a card-carrying member of the FP Cool Kids Club. I've never been formally taught anything about FP. And though I have a CS academic background and I am decent at math, mathematical notation is not how my brain understands programming. I have never written a line of Scheme, Clojure, or Haskell. I'm not an old-school Lisp'r.
+К сожалению, я не являюсь членом закрытого клуба экспертов в FP. Я никогда не занимался формальным изучением функционального программирования. И хотя я имею образование в области Computer Science и довольно неплохо разбираюсь в математике, математические выражения - это не то, как мой мозг понимает программирование. Я до сих пор не написал ни строчки кода на Scheme, Clojure, или Haskell. И конечно, я не олдскульный Лиспер.
 
-I *have* attended countless conference talks about FP, each one with the desperate clinging hope that finally, *this time* would be the time I understood what this whole functional programming mysticism is all about. And each time, I came away frustrated and reminded that those terms got all mixed up in my head and I had no idea if or what I learned. Maybe I learned things. But I couldn't figure out what those things were for the longest time.
+Но что я действительно *сделал*  - так это посетил неисчислимое количество докладов о ФП на разнообразных конференциях, и на каждый из них я шел с надеждой, что вот уж *теперь-то* я наконец разберусь, в чем заключается мистицизм функционального программирования. И каждый раз я выходил разочарованным с неизменным ощущением того, что вся эта терминология перемешалась в моей голове в одну сплошную кашу. И я по-прежнему не имел представления, что же все это означает. Возможно, я и узнавал там новые вещи. Но ещё долгое время я не мог осознать их практическую пользу.
 
-Little by little, across those various exposures, I teased out bits and pieces of important concepts that seem to just come all too naturally to the formal FPer. I learned them slowly and I learned them pragmatically and experientially, not academically with appropriate terminology. Have you ever known a thing for a long time, and only later found out it had a specific name you never knew!?
+Однако, мало-помалу кусочки пазла в моей голове начнали собираться в единую картину важных базовых концепций, которые выглядят такими естественными для любого настоящего функциональщика. Я познавал их медленно, через призму практики и экспериментов, а не формально и с использованием подобающей терминологии. Случалось ли вам столкнуться с тем, что то, чем вы давно и успешно пользуетесь оказывается имеет своё собственное название, о котором вы никогда не знали!?
 
-Maybe you're like me; I heard terms such as "map-reduce" around industry segments like "big data" for years with no real idea what they were. Eventually I learned what the `map(..)` function did -- all long before I had any idea that list operations were a cornerstone of the FPer path and what makes them so important. I knew what *map* was long before I ever knew it was called `map(..)`.
+Если да, то, возможно, в этом вы похожи на меня; Я слышал слова вроде "map-reduce" в различных контекстах, особенно в отношении "больших данных" на протяжении лет, не имея ни малейшего представления о том, что они действительно означают. Со временем я узнал, что делает функция `map(..)`  -- до того момента я и представить себе не мог, что операции над массивами являются краеугольным камнем на пути функциональщика, и это делает их невероятно важными. Фактически, я знал, что делает *map* задолго до того, как узнал о его правильном названии.
 
-Eventually I began to gather all these tidbits of understanding into what I now call "Functional-Light Programming" (FLP).
+Со временем, я начал собирать все эти фрагменты знаний в то, что позже назвал "Функционально-легким программированием" (FLP).
 
-## Mission
+## Миссия
 
-But why is it so important for you to learn functional programming, even the light form?
+Почему же знания о функциональном программировании так важны для среднего программиста, даже в подобной легкой форме?
 
-I've come to believe something very deeply in recent years, so much so you could *almost* call it a religious belief. I believe that programming is fundamentally about humans, not about code. I believe that code is first and foremost a means of human communication, and only as a *side effect* (hear my self-referential chuckle) does it instruct the computer.
+В последние годы, я пришел к убеждению, в которое поверил очень глубоко. Настолько глубоко, что оно стало для меня *сродни* религии. Я убежден, что программирование - это в отражение человека в целом, а не про набор знаков и символов, которые мы привыкли называть кодом. Код - в первую очередь форма коммуникации, а программа, и её работа внутри компьютера - лишь *сайдэффект* (саркастический смешок).
 
-The way I see it, functional programming is at its heart about using patterns in your code that are well-known, understandable, *and* proven to keep away the mistakes that make code harder to understand. In that view, FP -- or, ahem, FLP! -- might be one of the most important collections of tools any developer could acquire.
+На мой взгляд, основа фунцкионального программирования - использование паттернов, которые общеизвестны, понятны и доказанно свободны от ошибок, делающих код сложнее для понимания. В этом смысле, ФП -- или, хм, ФЛП! -- является одним из наиболее важных и полезных наборов инструментов, которым разработчик может научиться пользоваться.
 
-> The curse of the monad is that... once you understand... you lose the ability to explain it to anyone else.
+> Проклятье монады в том... что однажда поняв... ты теряешь способность объяснить кому-либо ещё.
 >
-> Douglas Crockford 2012 "Monads and Gonads"
+> Дуглас Крокфорд 2012 "Монады и Гонады"
 >
 > https://www.youtube.com/watch?v=dkZFtimgAcM
 
-I hope this book "Maybe" breaks the spirit of that curse, even though we won't talk about "monads" until the very end in the appendices.
+Я надеюсь, что эта книга, "Возможно" разобьет это проклятье, несмотря на то что мы не будем упоминать о монадах почти до самого конца книги.
 
-The formal FPer will often assert that the *real value* of FP is in using it essentially 100%: it's an all-or-nothing proposition. The belief is that if you use FP in one part of your program but not in another, the whole program is polluted by the non-FP stuff and therefore suffers enough that the FP was probably not worth it.
+Настоящие функциональщики обычно утверждают, что *настоящая ценность*, не может быть достигнута, если вы не пишете на 100% функциональный код. Считается, что если вы используете ФП только в одной части программы, и не используете в другой - то вся ваша программа загрязнена сайдэффектами настолько, что вероятно не стоило и заморачиваться с ФП стилем вообще.
 
-I'll say unequivocally: **I think that absolutism is bogus**. That's as silly to me as suggesting that this book is only good if I use perfect grammar and active voice throughout; if I make any mistakes, it degrades the entire book's quality. Nonsense.
+Скажу однозначно: **Я думаю что подобные абсолютистские заявления - полная чушь**. Для меня это так же глупо, как говорить о том, что книга хороша только тогда, когда я использую совершенную грамматику и ритм повсюду; и если я где-то сделаю ошибку, это испортит всю книгу целиком. Ерунда.
 
-The better I am at writing in a clear, consistent voice, the better your reading experience will be. But I'm not a 100% perfect author. Some parts will be better written than others. The parts where I can still improve are not going to invalidate the other parts of this book which are useful.
+Конечно, чем лучше качество написания кода и его конститентность, тем проще его будет прочитать. Но проблема в том, что я - не идеальный автор. И некоторые части удаются мне лучше, чем другие. Но те части, которые требуют улучшения вовсе не обесценивают пользу от всей книги.
 
-And so it goes with our code. The more you can apply these principles to more parts of your code, the better your code will be. Use them well 25% of the time, and you'll get some good benefit. Use them 80% of the time, and you'll see even more benefit.
+То же справедливо и для кода. Чем больше и чаще вы будете применять данные принципе, тем лучше будет ваш код. Даже используя их только 25% времени вы получите ощутимую выгоду. Используйте их 80% времени, вы увидите что выгода выросла в разы.
 
-With perhaps a few exceptions, I don't think you'll find many absolutes in this text. We'll instead talk about aspirations, goals, principles to strive for. We'll talk about balance and pragmatism and trade-offs.
+За, возможно, некоторыми исключениями, в этой книге вы не найдете утверждений, претендующих на асолютную истину. Вместо этого, мы поговорим о целях и принципах, к которым нужно стремиться. Мы поговорим о балансе, прагматизме и компромиссах.
 
-Welcome to this journey into the most useful and practical foundations of FP. We both have plenty to learn!
+Добро пожаловать в это путешествие в самые полезные и практические основы FP. Нам обоим есть чему поучиться!
