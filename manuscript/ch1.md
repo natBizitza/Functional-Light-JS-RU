@@ -1,21 +1,21 @@
-# Functional-Light JavaScript
-# Chapter 1: Why Functional Programming?
+# Функционально-легкий JavaScript
+# Глава 1: Почему Функциональное Программирование?
 
-> Functional programmer: (noun) One who names variables "x", names functions "f", and names code patterns "zygohistomorphic prepromorphism"
+> Функциональщик: (сущ.) Тот парень, который называет переменные "x", функции "f", а паттерны -- "Зигохистоморфный Препроморфизм"
 >
-> James Iry @jamesiry 5/13/15
+> Джеймс Ири @jamesiry 5/13/15
 >
 > https://twitter.com/jamesiry/status/598547781515485184
 
-Functional Programming (FP) is not a new concept by any means. It's been around almost the entire history of programming. However, and I'm not sure it's fair to say, but... it sure hasn't seemed like as mainstream of a concept in the overall developer world until perhaps the last few years. I think FP has more been the realm of academics.
+Функциональное Программирование (ФП) безусловно не является новой концепцией. В том или ином виде этот подход существовал на протяжении почти всей истории программирования. Тем не менее, хотя я не до конца уверен что это справедливое утрвеждение... эта концепция никогда не была сильно распространена среди практикующих программистов, до последних нескольких лет. Как мне кажется, ФП больше лежало в области интересов ученых.
 
-That's all changing, though. A groundswell of interest is growing around FP, not just at the languages level but even in libraries and frameworks. You very well might be reading this text because you've finally realized FP is something you can't ignore any longer. Or maybe you're like me and you've tried to learn FP many times before but struggled to wade through all the terms or mathematical notation.
+Однако все меняется. ФП начинает получать все более широкую общественную поддержку, не только на уровне синтаксиса языков, но в том числе и на уровне библиотек и фреймворков. Очень может быть, что вы читаете этот текст потом, что наконец осознали, что ФП стало тем, что больше нельзя игнорировать. Или, возможно, вы также как и я, множество раз пытались подойти к изучению ФП, но каждый раз спотыкались продираясь через все эти термины и математические выражения.
 
-This first chapter's purpose is to answer questions like "Why should I use FP style with my code?" and "How does Functional-Light JavaScript compare to what others say about FP?" After we've laid that groundwork, throughout the rest of the book we'll uncover, piece by piece, the techniques and patterns for writing JS in Functional-Light style.
+Цель первой главы заключается в том, чтобы ответить на вопросы вроде "Почему я должен использовать ФП стиль для своего кода?" или "Как Функционально-легкий JavaScript соотносится с другими ФП подходами?" После завершения этой подготовительной работы, на протяжении оставшейся части книги мы будем постепенно раскрывать методы и шаблоны написания JS кода в Функционально-Легком стиле.
 
-## At a Glance
+## Взгляд "одним глазом"
 
-Let's briefly illustrate the notion of "Functional-Light JavaScript" with a before-and-after snapshot of code. Consider:
+Давайте кратко проиллюстрируем понятие "Функционально-Легкий Javascript" путем сравнения кода, написанного с использованием различных подходов. Рассмотрим следующий фрагмент:
 
 ```js
 var numbers = [4,10,0,27,42,17,15,-6,58];
@@ -48,7 +48,7 @@ function outputMsg() {
 }
 ```
 
-Now consider a very different style that accomplishes exactly the same outcome:
+А теперь взгляните на этот фрагмент, выполняющий ту же самую работу:
 
 ```js
 var sumOnlyFavorites = FP.compose( [
@@ -72,27 +72,27 @@ function sum(x,y) { return x + y; }
 function constructMsg(v) { return `The magic number is: ${v}`; }
 ```
 
-Once you understand FP and Functional-Light, this is likely how you'd *read* and mentally process that second snippet:
+Как только вы начнете понимать ФП и Функционально-Легкий подход, скорее всего во втором фрагменте вы прочтете следующие:
 
-> We're first creating a function called `sumOnlyFavorites(..)` that's a combination of three other functions. We combine two filters, one checking if a value is greater-than-or-equal to 10 and one for less-than-or-equal to 20. Then we include the `sum(..)` reducer in the transducer composition. The resulting `sumOnlyFavorites(..)` function is a reducer that checks if a value passes both filters, and if so, adds the value to an accumulator value.
+> Сначала мы создаем функцию `sumOnlyFavorites(..)`, являющуюся комбинацией трех других функций. Мы объединяем два фильтра, одно сравнение с 10 и 20. После этого, мы добавляем редьюсер `sum(..)` в композицию трансьдюcера. На выходе получаем функцию `sumOnlyFavorites(..)`, являющуюся редьюсером, который проверяет, подпадает ли значение под оба фильтра, и если да, добавляет его к значению аккумулятора.
 >
-> Then we make another function called `printMagicNumber(..)` which first reduces a list of numbers using that `sumOnlyFavorites(..)` reducer we just defined, resulting in a sum of only numbers that passed the *favorite* checks. Then `printMagicNumber(..)` pipes that final sum into `constructMsg(..)`, which creates a string value that finally goes into `console.log(..)`.
+> Потом мы создаем другую функцию `printMagicNumber(..)`, которая применяет редьюсер `sumOnlyFavorites(..)` к списку чисел, получая на выходе только сумму искомых чисел. После чего `printMagicNumber(..)` пропускает это финальное значение через функцию `constructMsg(..)`, которая создает строковое представление результата, в конечном счете попадающего в `console.log(..)`.
 
-All those moving pieces *speak* to an FP developer in ways that likely seem highly unfamiliar to you right now. This book will help you *speak* that same kind of reasoning so that it's as readable to you as any other code, if not more so!
+Весь этот поток кода *говорит* с ФП программистом образом, который скорее всего ещё вам не знаком. Эта книга поможет ва начать *говорить* аналогичным образом, так что этот код станет для вас столь же читабельным, как любой ругой, если не более того!
 
-A few other quick remarks about this code comparison:
+Несколько замечаний по поводу данного сравнения фрагментов кода:
 
-* It's likely that for many readers, the former snippet feels closer to comfortable/readable/maintainable than the latter snippet. It's entirely OK if that's the case. You're in exactly the right spot. I'm confident that if you stick it out through the whole book, and practice everything we talk about, that second snippet will eventually become a lot more natural, maybe even preferable!
+* Вполне вероятно, что для многих читателей первый фрагмент выглядит более удобным/читаемым/поддерживаемым, чем второй. Абсолютно нормально, если это так. Я уверен, что если вы найдете в себе силы дочитать эту книгу и попробовать применить все практики, которые будут рассмотрены, второй фрагмент кода станет для вас гораздо более естественным, и возможно даже предпочтительным!
 
-* You might have done the task significantly or entirely different from either snippet presented. That's OK, too. This book won't be prescriptive in dictating that you should do something a specific way. The goal is to illustrate the pros/cons of various patterns and enable you to make those decisions. By the end of this book, how you would approach the task may fall a little closer to the second snippet than it does right now.
+* Возможно, у вас есть способ решения той же задачи, кардинально отличающийся от предстваленных. Это тоже нормально. Данная книга не ставит себе целью выдавать предписания, каким способом решить ту или иную задачу. Цель состоит в иллюстрации плюсов и минусов различных паттернов, а также в том, чтобы научить вас принимать правильные решения, полагаясь на эти данные. К концу этой книги вы, вероятно, будете более склонны ко второму представленному варианту, нежели сейчас.
 
-* It's also possible that you're already a seasoned FP developer who's scanning through the start of this book to see if it has anything useful for you to read. That second snippet certainly has some bits that are quite familiar. But I'm also betting that you thought, "Hmmm, I wouldn't have done it *that* way..." a couple of times. That's OK, and entirely reasonable.
+* Также возможно, что вы уже опытный разработчик FP, который просматривает начало этой книги, чтобы узнать, есть ли что-нибудь полезное для вас. И этот второй фрагмент конечно же уже выглядит для вас знакомым. Но я также готов поспорить, что вы вы пару раз подумали: «Хм, я бы этого не сделал * таким * образом ...». Это нормально и вполне разумно.
 
-    This is not a traditional, canonical FP book. We'll at times seem quite heretical in our approaches. We're seeking to strike a pragmatic balance between the clear undeniable benefits of FP, and the need to ship workable, maintainable JS without having to tackle a daunting mountain of math/notation/terminology. This is not *your* FP, it's "Functional-Light JavaScript".
+    Это не традиционная, каноническая книга по Функциональному Программированию. И временами используемые в ней подходы могут казаться весьма еретичными. Мы стремимся к достижению прагматического баланса между очевидными неоспоримыми преимуществами ФП и необходимостью поставки работоспособного, поддерживаемого JS кода без необходимости одолевать гору терминов и математических выражений. Это не *традиционное* ФП, это "Функционально-Легкий JavaScript".
 
-Whatever your reasons for reading this book, welcome!
+Но независимо от причин, по которым вы читаете эту книгу, я говорю вам "Добро пожаловать"!
 
-## Confidence
+## Надежность
 
 I have a very simple premise that sort of underlies everything I do as a teacher of software development (in JavaScript): code that you cannot trust is code that you do not understand. The reverse is true also: code that you don't understand is code you can't trust. Furthermore, if you cannot trust or understand your code, then you can't have any confidence whatsoever that the code you write is suitable to the task. You run the program and basically just cross your fingers.
 
