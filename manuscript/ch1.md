@@ -94,17 +94,17 @@ function constructMsg(v) { return `The magic number is: ${v}`; }
 
 ## Надежность
 
-I have a very simple premise that sort of underlies everything I do as a teacher of software development (in JavaScript): code that you cannot trust is code that you do not understand. The reverse is true also: code that you don't understand is code you can't trust. Furthermore, if you cannot trust or understand your code, then you can't have any confidence whatsoever that the code you write is suitable to the task. You run the program and basically just cross your fingers.
+У меня есть очень простая точка зрения, которая лежит в основе всего, что я делаю как преподаватель разработки программного обеспечения (на JavaScript): код, которому нельзя доверять - это код, который ты не понимаешь. Обратное тоже верно: код, который не понятен - не заслуживает доверия. Больше того, если код непонятен и ему нельзя доверять, то нельзя быть уверенным, что этот код способен решить проблему, для решения которой он был написан. Запуск такой программы равноценен участию в лотерее.
 
-What do I mean by trust? I mean that you can verify, by reading and reasoning, not just executing, that you understand what a piece of code *will* do; you aren't just relying on what it *should* do. More often than is perhaps prudent, we tend to rely on running test suites to verify our programs' correctness. I don't mean to suggest tests are bad. But I do think we should aspire to be able to understand our code well enough that we know the test suite will pass before it runs.
+Но что я имею в виду под "доверием"? Я имею в виду, что путем чтения кода и логических рассуждений вы можете понять то, что *будет* делать программа, не запуская её; избавляя себя от необходимости полагаться на то, что она *должна* делать. Возможно, мы чаще необходимого склонны полагаться на тесты и уровень покрытия ими кода чтобы убедиться в работоспособности программы. Я не хочу сказать, что тесты - это плохо. Но я думаю, что мы должны стремиться к тому, чтобы понимать наш код достаточно хорошо, чтобы быть уверенными, что тесты проходят, ещё до их запуска.
 
-The techniques that form the foundation of FP are designed from the mindset of having far more confidence over our programs just by reading them. Someone who understands FP, and who's disciplined enough to diligently use it throughout their programs, will write code that they **and others** can read and verify that the program will do what they want.
+Принципы, лежащие в основе ФП разработанны с учетом того, чтобы иметь гораздо больше уверенности в том, что делает программа, просто прочитав её исходный код. Тот, кто понимает ФП и достаточно дисциплирован, чтобы использовать при написании кода, способен написать программу таким образом, что её задача и корректность реализации будет понятна **каждому** прочитавшему код.
 
-Confidence is also increased when we use techniques that avoid or minimize likely sources of bugs. That's perhaps one of the biggest selling points of FP: FP programs often have fewer bugs, and the bugs that do exist are usually in more obvious places, so they're easier to find and fix. FP code tends to be more bug-resistant -- certainly not bug-proof, though.
+Надежность программ также повышается, когда мы используем техники, помогающие минимизировать наиболее вероятные источники возникновения ошибок. Это, пожалуй один из главных аргументов в пользу ФП: в программах, написанных в функциональном  стиле часто меньше ошибок, а те, что есть, находятся в очевидных местах, поэтому их легко найти и исправить. Функциональный код имеет тенденцию быть более устойчивым к багам. Хотя конечно, не гарантирует их отсутствие.
 
-As you journey through this book, you will begin to develop more confidence in the code you write, because you will use patterns and practices that are already well proven; and you'll avoid the most common causes of program bugs!
+В процессе чтения этой книги, вы начнете больше доверять написанному вами коду, потому что вы будете использовать шаблоны и практики, которые уже хорошо зарекомендовали себя, а также свободны от наиболее частых причин возникновения ошибок в работе программы!
 
-## Communication
+## Общение
 
 Why is Functional Programming important? To answer that, we need to take a bigger step back and talk about why programming itself is important.
 
