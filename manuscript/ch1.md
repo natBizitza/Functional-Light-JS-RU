@@ -106,27 +106,27 @@ function constructMsg(v) { return `The magic number is: ${v}`; }
 
 ## Общение
 
-Why is Functional Programming important? To answer that, we need to take a bigger step back and talk about why programming itself is important.
+Почему Функциональное Программирование является столь важным? Чтобы ответить на этот вопрос, следует отойти на шаг назад и поговорить о важности программирования в целом.
 
-It may surprise you to hear this, but I don't believe that code is primarily a set of instructions for the computer. Actually, I think the fact that code instructs the computer is almost a happy accident.
+Это может показаться странным, но я не считаю, что программа - это прежде всего набор инструкций для компьютера, предназначенный для решения определенной задачи. На самом деле, мне это кажется даже скорее счастливой случайностью.
 
-I believe very deeply that the vastly more important role of code is as a means of communication with other human beings.
+Я горячо верю в то, что у кода есть куда более важная роль  - это средство коммуникации с другими людьми.
 
-You probably know by experience that an awful lot of your time spent "coding" is actually spent reading existing code. Very few of us are so privileged as to spend all or most of our time simply banging out all new code and never dealing with code that others (or our past selves) wrote.
+Наверняка, вам на собственном опыте пришлось убедиться, насколько большую часть времени программиста занимает чтение существующего кода. Лишь очень небольшая часть из нас имеет счастье тратить всё (или большую часть) времени на написание кода "с нуля", без необходимости иметь дело с кодом, написанным другими (или даже самим собой из прошлого).
 
-It's widely estimated that developers spend 70% of code maintenance time on reading to understand it. That is eye-opening. 70%. No wonder the global average for a programmer's lines of code written per day is about 10. We spend up to 7 hours of our day just reading the code to figure out where those 10 lines should go!
+По общим оценкам, разработчики тратят примерно 70% своего времени на то, чтобы прочитать и разобраться с имеющейся кодовой базой. Это открывает глаза. 70%. Не удивительно, что средний программист пишет лишь около 10 строк в день. И мы убиваем до 7 часов в день, просто на чтение кода и попытки осознать, что же на самом деле должны делать эти 10 строк!
 
-We need to focus a lot more on the readability of our code. And by the way, readability is not just about fewer characters. Readability is actually most impacted by familiarity.<a href="#user-content-footnote-1"><sup>1</sup></a>
+Мы должны гораздо больше времени уделять читабельности нашего кода. И, кстати - читабельность не обязательно означает сокращение количества символов. Читабельность больше всего зависит от того, насколько знакомым и близким для нас выглядит код<a href="#user-content-footnote-1"><sup>1</sup></a>
 
-If we are going to spend our time concerned with making code that will be more readable and understandable, FP is central in that effort. The principles of FP are well established, deeply studied and vetted, and provably verifiable. Taking the time to learn and employ these FP principles will ultimately lead to more readily and recognizably familiar code for you and others. The increase in code familiarity, and the expediency of that recognition, will improve code readability.
+Если мы решили тратить время на написание кода, который будет более читаемым и понятным, стоит сконцетрироваться на принципах ФП. Эти принципы хорошо обоснованы, глубоко проверны и изучены, а кроме того, легко доказуемы. Потратив время на их изучение и практическое применение, вы в конечном итоге сможете создавать код, который будет знаком и близок вам и вашим коллегам. А с улучшением узнаваемость кода, последует и улучшение читабельности.
 
-For example, once you learn what `map(..)` does, you'll be able to almost instantly spot and understand it when you see it in any program. But every time you see a `for` loop, you're going to have to read the whole loop to understand it. The syntax of the `for` loop may be familiar, but the substance of what it's doing is not; that has to be *read*, every time.
+Например, как только вы усвоили, что делает `map(..)`, вы будете способны практически мгновенно понять, для чего он используется в конкретном месте кода программы. Но каждый раз, когда вы имеете дело с циклом `for`, придется полностью прочитать тело цикла, чтобы понять, для чего он предназначен. При этом сам синтакс `for` может выглядеть более знакомым, но сама суть того, что он делает - нет. Вы вынуждены будете тратить время на его *чтение* каждый раз.
 
-By having more code that's recognizable at a glance, and thus spending less time figuring out what the code is doing, our focus is freed up to think about the higher levels of program logic; this is the important stuff that most needs our attention anyway.
+Увеличивая процент кода, узнаваемого "с первого взгляда", и, таким образом, меньше времени тратя на его чтение, мы можем сосредоточиться на более высоких уровнях логики программы. Это в любом случае гораздо более важный вопрос, который больше всего требует нашего внимания.
 
-FP (at least, without all the terminology weighing it down) is one of the most effective tools for crafting readable code. *That* is why it's so important.
+ФП (по крайней мере, без всей этой утяжеляющей терминологии) - один из наиболее эффективных инструментов создания читаемого и поддерживаемого кода. И именно *поэтому* ознакомиться с ним столь важно.
 
-## Readability
+## Читабельность
 
 Readability is not a binary characteristic. It's a largely subjective human factor describing our relationship to code. And it will naturally vary over time as our skills and understanding evolve. I have experienced effects similar to the following figure, and anecdotally many others I've talked to have as well.
 
