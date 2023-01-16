@@ -171,23 +171,24 @@ function constructMsg(v) { return `The magic number is: ${v}`; }
 
 ## Перспектива
 
-Most other FP texts seem to take a top-down approach, but we're going to go the opposite direction: working from the ground up, we'll uncover the basic foundational principles that I believe formal FPers would admit are the scaffolding for everything they do. But for the most part we'll stay arm's length away from most of the intimidating terminology or mathematical notation that can so easily frustrate learners.
+Большинство других текстов ФП, похоже, придерживаются подхода "сверху вниз", но мы собираемся пойти в противоположном направлении: работая с нуля, мы раскроем основные основополагающие принципы, которые, я полагаю, официальные разработчики ФП признали бы основой для всего, что они делают. Но по большей части мы будем держаться на расстоянии вытянутой руки от большей части пугающей терминологии или математических обозначений, которые так легко могут расстроить учащихся.
 
-I believe it's less important what you call something and more important that you understand what it is and how it works. That's not to say there's no importance to shared terminology -- it undoubtedly eases communication among seasoned professionals. But for the learner, I've found it can be distracting.
+Я считаю, что менее важно, как вы что-то называете, и более важно, чтобы вы понимали, что это такое и как это работает. Это не значит, что общая терминология неважна - она несмоненно упрощает общение между опытными профессионалами. Хотя я обнаружил, что для ученика это может быть отвлекающим.
 
-So this book will try to focus more on the base concepts and less on the fancy fluff. That's not to say there won't be terminology; there definitely will be. But don't get too wrapped up in the sophisticated words. Wherever necessary, look beyond them to the ideas.
+Итак, в этой книге мы сконцентрируемся больше на фундаментальных концепциях и меньше на замысловатостях. Это не значит, что мы не используем терминологию; она точно будет. Однако не зацикливайтесь на завороченных словах. Везде, где это необходимо, обращайте внимание на идеи, стоящими за ними.
 
-I call the less formal practice herein "Functional-Light Programming" because I think where the formalism of true FP suffers is that it can be quite overwhelming if you're not already accustomed to formal thought. I'm not just guessing; this is my own personal story. Even after teaching FP and writing this book, I can still say that the formalism of terms and notation in FP is very, very difficult for me to process. I've tried, and tried, and I can't seem to get through much of it.
+Я называю здесь менее формальную практику "Функционально-лёгким программированием", потому что я думаю, что формализм истинного ФП страдает от того, что он может быть довольно подавляющим, если вы еще не привыкли к формальному мышлению. Я не просто предполагаю; это моя собственная личная история. Даже после преподавания ФП и написания этой книги, я всё ещё могу сказать, что формализм терминов и обозначений в ФП  мне очень, очень трудно усвоить. Я пытался, и пытался, и, похоже, не могу справиться со многим из этого.
 
-I know many FPers who believe that the formalism itself helps learning. But I think there's clearly a cliff where that only becomes true once you reach a certain comfort with the formalism. If you happen to already have a math background or even some flavors of CS experience, this may come more naturally to you. But some of us don't, and no matter how hard we try, the formalism keeps getting in the way.
+Я знаю многих разработчиков ФП, которые верят в то, что формализм помогает обучению. Но, я считаю, что здесь явно есть предел, где это становится правдой только тогда, когда вы достигаете определённого комфорта с формализмом. Если у вас уже есть математическое образование или даже определённый опыт в компьютерной науке, это может показаться вам более знакомым. Многие из нас не имеют этого, и несмотря на наши старания, формализм продолжает мешать нам.
 
-So this book introduces the concepts that I believe FP is built on, but comes at it by giving you a boost from below to climb up the cliff wall, rather than condescendingly shouting down at you from the top, prodding you to just figure out how to climb as you go.
+Итак, эта книга знакомит с концепциями, на которых, как я полагаю, построен ФП, но при этом даёт вам толчок снизу, чтобы подняться по отвесной стене, вместо того, чтобы снисходительно кричать на вас сверху, подталкивая подсказывает вам, как карабкаться по ходу дела.
 
-## How to Find Balance
+## Как найти баланс
 
-If you've been around programming for very long, chances are you've heard the phrase "YAGNI" before: "You Ain't Gonna Need It". This principle primarily comes from extreme programming, and stresses the high risk and cost of building a feature before it's needed.
+Если ты уже достаточно времени в программировании, есть возможность, что ты слышал фразу "YAGNI" раньше: "You Ain't Gonna Need It" ("Тебе это не понадобится"). Этот принцип в первую очередь исходит из экстремального программирования и подчёркивает высокий риск и стоимость создания функциональности до того, как она понадобится.
 
-Sometimes we guess we'll need a feature in the future, build it now believing it'll be easier to do as we build other stuff, then realize we guessed wrong and the feature wasn't needed, or needed to be quite different. Other times we guess right, but build a feature too early, and suck up time from the features that are genuinely needed now; we incur an opportunity cost in diluting our energy.
+Иногда мы предполагаем, что нам будет нужна определённая функциональность в будущем, мы создаём её сейчас, полагая, что так будет проще, пока мы работаем над другими, а затем понимаем, что мы ошиблись, и функциональность не нужна или должна была быть совсем другой.
+Other times we guess right, but build a feature too early, and suck up time from the features that are genuinely needed now; we incur an opportunity cost in diluting our energy.
 
 YAGNI challenges us to remember: even if it's counterintuitive in a situation, we often should postpone building something until it's presently needed. We tend to exaggerate our mental estimates of the future refactoring cost of adding it later when it is needed. Odds are, it won't be as hard to do later as we might assume.
 
