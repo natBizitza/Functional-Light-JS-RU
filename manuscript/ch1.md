@@ -128,48 +128,48 @@ function constructMsg(v) { return `The magic number is: ${v}`; }
 
 ## Читабельность
 
-Readability is not a binary characteristic. It's a largely subjective human factor describing our relationship to code. And it will naturally vary over time as our skills and understanding evolve. I have experienced effects similar to the following figure, and anecdotally many others I've talked to have as well.
+Читабельность - это не бинарная характеристика. Это в значительной степени субъективный человеческий фактор, описывающий наше отношение к коду. И он, естественно, будет меняться со временем по мере развития наших навыков и понимания. У меня был опыт подобный показанному на нижеприведённом графике, и, как ни странно, многие другие, с которыми я разговаривал, испытывали тоже самое.
 
 <p align="center">
     <img src="images/fig17.png" width="50%">
 </p>
 
-You may just find yourself experiencing similar effects as you work through the book. But take heart; if you stick this out, the curve comes back up!
+Возможно, вы будете испытывать похожие ощущения во время прочтения этой книги. Однако наберитесь мужества. Если вы продержитесь до конца, кривая снова пойдёт вверх!
 
-*Imperative* describes the code most of us probably already write naturally; it's focused on precisely instructing the computer *how* to do something. Declarative code -- the kind we'll be learning to write, which adheres to FP principles -- is code that's more focused on describing the *what* outcome.
+*Императивный стиль программирования*  описывает код, который большинство из нас пишет каждый день. Он нацелен на то, чтобы точно давать инструкции компьютору *как* что-то выполнить. Декларативный код - тот, который мы будем учиться писать, следует принципам ФП - это код, который больше ориентирован на описание того, **чего** мы хотим добиться.
 
-Let's revisit the two code snippets presented earlier in this chapter.
+Давайте вернёмся к двум ранее представленным в этой главе фрагментам кода.
 
-The first snippet is imperative, focused almost entirely on *how* to do the tasks; it's littered with `if` statements, `for` loops, temporary variables, reassignments, value mutations, function calls with side effects, and implicit data flow between functions. You certainly *can* trace through its logic to see how the numbers flow and change to the end state, but it's not at all clear or straightforward.
+Первый фрагмент - императивный, он почти полностью сосредоточен на том, *КАК* выполнять задачи; он усеян операторами `if`, циклами `for`, временными переменными, переназначениями, мутациями значений, вызовами функций с побочными эффектами и неявным потоком данных между функциями. Вы, конечно, *можете* проследить его логику, чтобы увидеть, как числа текут и переходят в конечное состояние, но это совсем не ясно и не прямолинейно.
 
-The second snippet is more declarative; it does away with most of those aforementioned imperative techniques. Notice there's no explicit conditionals, loops, side effects, reassignments, or mutations; instead, it employs well-known (to the FP world, anyway!) and trustable patterns like filtering, reduction, transducing, and composition. The focus shifts from low-level *how* to higher level *what* outcomes.
+Второй отрывок более декларативный; он упраздняет большинство вышеупомянутых императивных методов. Обратите внимание, что здесь нет явных условных обозначений, циклов, побочных эффектов, переназначений или мутаций; вместо этого там использованы хорошо известные (во всяком случае, в мире ФП!) и заслуживающие доверия шаблоны, такие как фильтрация, сокращение, трансдьюсинг и композиция. Фокус смещается с низкоуровневых результатов *как* на более высокий уровень *что*.
 
-Instead of messing with an `if` statement to test a number, we delegate that to a well-known FP utility like `gte(..)` (greater-than-or-equal-to), and then focus on the more important task of combining that filter with another filter and a summation function.
+Вместо того, чтобы возиться с оператором `if` для проверки числа, мы делегируем это хорошо известной служебной программе ФП, такой как `gte (..)` (greater-than-or-equal-to) (больше или равно), а затем фокусируемся на более важной задаче объединения этого фильтра с другим фильтром и функция суммирования. 
 
-Moreover, the flow of data through the second program is explicit:
+Более того, поток данных во второй программе является явным:
 
-1. A list of numbers goes into `printMagicNumber(..)`.
-2. One at a time those numbers are processed by `sumOnlyFavorites(..)`, resulting in a single number total of only our favorite kinds of numbers.
-3. That total is converted to a message string with `constructMsg(..)`.
-4. The message string is printed to the console with `console.log(..)`.
+1. Список чисел переходит в `printMagicNumber(..)`.
+2. Один за другим эти числа обрабатываются с помощью  `sumOnlyFavorites(..)`, в результате чего получается единое число, состоящее только из наших любимых видов чисел.
+3. Эта сумма преобразуется в строку сообщения с `constructMsg(..)`.
+4. Строка сообщения выводится на консоль с помощью  `console.log(..)`.
 
-You may still feel this approach is convoluted, and that the imperative snippet was easier to understand. You're much more accustomed to it; familiarity has a profound influence on our judgments of readability. By the end of this book, though, you will have internalized the benefits of the second snippet's declarative approach, and that familiarity will spring its readability to life.
+Возможно, вам всё ещё кажется, что этот подход является запутанным, и что императивный фрагмент легче понять. Он (императивный стиль) более привычен вам; знакомство оказывает глубокое влияние на наши суждения о читабельности. Хотя, к концу прочтения этой книги, вы усвоите преимущества декларативного подхода второго фрагмента, и это знакомство пробудит читабельность.
 
-I know asking you to believe that at this point is a leap of faith.
+Я знаю, просить вас поверить в это на данный момент - это вопрос доверия.
 
-It takes a lot more effort, and sometimes more code, to improve its readability as I'm suggesting, and to minimize or eliminate many of the mistakes that lead to bugs. Quite honestly, when I started writing this book, I could never have written (or even fully understood!) that second snippet. As I'm now further along on my journey of learning, it's more natural and comfortable.
+Требуется гораздо больше усилий, а иногда и больше кода, чтобы улучшить его читабельность как я предлагаю, и свести к минимуму или устранить многие ошибки, которые приводят к багам. Честно говоря, когда я начал написание этой книги, я никогда бы не смог бы написать (или даже полностью понять!) этот второй фрагмент. Сейчас, когда я более знаком с функциональным подходом, он выглядит даже более естественным и удобным. 
 
-If you're hoping that FP refactoring, like a magic silver bullet, will quickly transform your code to be more graceful, elegant, clever, resilient, and concise -- that it will come easy in the short term -- unfortunately that's just not a realistic expectation.
+Если вы надеетесь, что рефакторинг вашего кода в функциональном стиле, подобно волшебной палочке, быстро преобразит ваш код, сделав его более изящным, элегантным, умным, устойчивым и лаконичным - что в краткосрочной перспективе это будет легко - к сожалению, это просто нереалистичное ожидание. 
 
-FP is a very different way of thinking about how code should be structured, to make the flow of data much more obvious and to help your reader follow your thinking. It will take time. This effort is eminently worthwhile, but it can be an arduous journey.
+ФП - это совсем другой тип мышления о том, как должен быть структурирован код, чтобы сделать работу вашей программы с данными намного более очевидной и помочь читателям вашего кода следовать вашим мыслям. Это займёт время, но приложенные усилия в исключительной степени стоят достигнутого результата.
 
-It still often takes me multiple attempts at refactoring a snippet of imperative code into more declarative FP, before I end up with something that's clear enough for me to understand later. I've found converting to FP is a slow iterative process rather than a quick binary flip from one paradigm to another.
+Даже сейчас мне часто требуется несколько попыток рефакторинга фрагмента императивного кода в более декларативный ФП, прежде чем я получу что-то достаточно ясное, чтобы я мог понять это позже. Я обнаружил, что преобразование в ФП - это медленный итеративный процесс, а не быстрый бинарный переход от одной парадигмы к другой.
 
-I also apply the "teach it later" test to every piece of code I write. After I've written a piece of code, I leave it alone for a few hours or days, then come back and try to read it with fresh eyes, and pretend as if I need to teach or explain it to someone else. Usually, it's jumbled and confusing the first few passes, so I tweak it and repeat!
+Я также применяю тест "научу этому позже" к каждому фрагменту кода, который я пишу. После написания части кода, я оставляю его в покое на несколько часов или дней, затем возвращаюсь и пытаюсь читать его со свежим взглядом, и представляю, что мне нужно научить или объяснить это кому-то другому. Обычно первые несколько попыток получаются сумбурными и сбивающими с толку, поэтому я подправляю их и повторяю процесс!
 
-I'm not trying to dampen your spirits. I really want you to hack through these weeds. I am glad I did it. I can finally start to see the curve bending upward toward improved readability. The effort has been worth it. It will be for you, too.
+Я не пытаюсь ослабить ваш дух. Я действительно хочу, чтобы вы преодолели эти трудности. Я очень рад, что я сделал это. Я наконец-то могу увидеть кривую, стремящуюся к улучшению читабельности. Мои усилия оправдали себя. Также будет и для вас.
 
-## Perspective
+## Перспектива
 
 Most other FP texts seem to take a top-down approach, but we're going to go the opposite direction: working from the ground up, we'll uncover the basic foundational principles that I believe formal FPers would admit are the scaffolding for everything they do. But for the most part we'll stay arm's length away from most of the intimidating terminology or mathematical notation that can so easily frustrate learners.
 
