@@ -171,57 +171,57 @@ function constructMsg(v) { return `The magic number is: ${v}`; }
 
 ## Перспектива
 
-Most other FP texts seem to take a top-down approach, but we're going to go the opposite direction: working from the ground up, we'll uncover the basic foundational principles that I believe formal FPers would admit are the scaffolding for everything they do. But for the most part we'll stay arm's length away from most of the intimidating terminology or mathematical notation that can so easily frustrate learners.
+Большинство других текстов ФП, похоже, придерживаются подхода "сверху вниз", но мы собираемся пойти в противоположном направлении: работая с нуля, мы раскроем основные основополагающие принципы, которые, я полагаю, официальные разработчики ФП признали бы основой для всего, что они делают. Но по большей части мы будем держаться на расстоянии вытянутой руки от большей части пугающей терминологии или математических обозначений, которые так легко могут расстроить учащихся.
 
-I believe it's less important what you call something and more important that you understand what it is and how it works. That's not to say there's no importance to shared terminology -- it undoubtedly eases communication among seasoned professionals. But for the learner, I've found it can be distracting.
+Я считаю, что менее важно, как вы что-то называете, и более важно, чтобы вы понимали, что это такое и как это работает. Это не значит, что общая терминология неважна - она несмоненно упрощает общение между опытными профессионалами. Хотя мне кажется, что это может отвлекать начинающего.
 
-So this book will try to focus more on the base concepts and less on the fancy fluff. That's not to say there won't be terminology; there definitely will be. But don't get too wrapped up in the sophisticated words. Wherever necessary, look beyond them to the ideas.
+Итак, в этой книге мы сконцентрируемся больше на фундаментальных концепциях и меньше на замысловатостях. Это не значит, что мы не будем использовать терминологию; она точно будет. Однако не зацикливайтесь на завороченных словах. Везде, где это необходимо, обращайте внимание на идеи, стоящими за ними.
 
-I call the less formal practice herein "Functional-Light Programming" because I think where the formalism of true FP suffers is that it can be quite overwhelming if you're not already accustomed to formal thought. I'm not just guessing; this is my own personal story. Even after teaching FP and writing this book, I can still say that the formalism of terms and notation in FP is very, very difficult for me to process. I've tried, and tried, and I can't seem to get through much of it.
+Я называю здесь менее формальную практику "Функционально-лёгким программированием", потому что я думаю, что формализм истинного ФП страдает от того, что он может быть довольно подавляющим, если вы еще не привыкли к формальному мышлению. Я не просто предполагаю; это моя собственная личная история. Даже после преподавания ФП и написания этой книги, я всё ещё могу сказать, что формализм терминов и обозначений в ФП  мне очень, очень трудно усвоить. Я пытался, и пытался, и, похоже, не могу справиться со многим из этого.
 
-I know many FPers who believe that the formalism itself helps learning. But I think there's clearly a cliff where that only becomes true once you reach a certain comfort with the formalism. If you happen to already have a math background or even some flavors of CS experience, this may come more naturally to you. But some of us don't, and no matter how hard we try, the formalism keeps getting in the way.
+Я знаю многих разработчиков ФП, которые верят в то, что формализм помогает обучению. Но, я считаю, что здесь явно есть предел, где это становится правдой только тогда, когда вы достигаете определённого комфорта с формализмом. Если у вас уже есть математическое образование или даже определённый опыт в компьютерной науке, это может показаться вам более знакомым. Многие из нас не имеют этого, и несмотря на наши старания, формализм продолжает мешать нам.
 
-So this book introduces the concepts that I believe FP is built on, but comes at it by giving you a boost from below to climb up the cliff wall, rather than condescendingly shouting down at you from the top, prodding you to just figure out how to climb as you go.
+Итак, эта книга знакомит с концепциями, на которых, как я полагаю, построен ФП, но при этом даёт вам толчок снизу, чтобы подняться по отвесной стене, вместо того, чтобы снисходительно кричать на вас сверху, подталкивая подсказывает вам, как карабкаться по ходу дела.
 
-## How to Find Balance
+## Как найти баланс
 
-If you've been around programming for very long, chances are you've heard the phrase "YAGNI" before: "You Ain't Gonna Need It". This principle primarily comes from extreme programming, and stresses the high risk and cost of building a feature before it's needed.
+Если ты уже достаточно времени в программировании, есть возможность, что ты слышал фразу "YAGNI" раньше: "You Ain't Gonna Need It" ("Тебе это не понадобится"). Этот принцип в первую очередь исходит из экстремального программирования и подчёркивает высокий риск и стоимость создания функциональности до того, как она понадобится.
 
-Sometimes we guess we'll need a feature in the future, build it now believing it'll be easier to do as we build other stuff, then realize we guessed wrong and the feature wasn't needed, or needed to be quite different. Other times we guess right, but build a feature too early, and suck up time from the features that are genuinely needed now; we incur an opportunity cost in diluting our energy.
+Иногда мы предполагаем, что нам будет нужна определённая функциональность в будущем, мы создаём её сейчас, полагая, что так будет проще, пока мы работаем над другими, а затем понимаем, что мы ошиблись, и функциональность не нужна или должна была быть совсем другой. Иногда мы оказываемся правы, но создавая функциональность слишком рано, мы отнимаем время от тех функциональностей, которые нам действительно нужны сейчас. Мы несём альтернативные издержки и рассеиваем нашу энергию.
 
-YAGNI challenges us to remember: even if it's counterintuitive in a situation, we often should postpone building something until it's presently needed. We tend to exaggerate our mental estimates of the future refactoring cost of adding it later when it is needed. Odds are, it won't be as hard to do later as we might assume.
+YAGNI заставляет нас помнить о том, что даже если это противоречит интуиции в определённой ситуации, мы часто должны отложить создание чего-то до тех пор, пока это действительно нужно. Мы склонны мысленно преувеличивать наши оценки затрат на будущий рефакторинг, добавляя что-то позже, когда это необходимо. Велики шансы, что позже это будет не так сложно сделать, как мы могли бы предположить.
 
-As it applies to functional programming, I would offer this admonition: there will be plenty of interesting and compelling patterns discussed in this text, but just because you find some pattern exciting to apply, it may not necessarily be appropriate to do so in a given part of your code.
+Поскольку это относится к функциональному программированию, я бы предостерёг вас в следующем: здесь будет обсуждаться множество интересных и убедительных шаблонов, но только потому, что вам интересен для применения какой-то шаблон, он не обязательно может быть уместен в данной части вашего кода.
 
-This is where I will differ from many formal FPers: just because you *can* apply FP to something doesn't mean you *should* apply FP to it. Moreover, there are many ways to slice a problem, and even though you may have learned a more sophisticated approach that is more "future-proof" to maintenance and extensibility, a simpler FP pattern might be more than sufficient in that spot.
+Здесь моё мнение отличается от многих официальных мнений программистов ФП: только потому, что ты *можешь* применить ФП к чему-то, это не значит, что ты *должен* применять там ФП. Более того, существует множество подходов к решению проблемы, и даже если вы, возможно, изучили более сложный подход, который более "перспективен" в плане обслуживания и расширяемости, более простого шаблона ФП может быть более чем достаточно в этом месте.
 
-Generally, I'd recommend seeking balance in what you code, and to be conservative in your application of FP concepts as you get the hang of things. Default to the YAGNI principle in deciding if a certain pattern or abstraction will help that part of the code be more readable or if it's just introducing clever sophistication that isn't (yet) warranted.
+Как правило, я бы рекомендовал стремиться к балансу в том, какой код вы пишите, и быть консервативным в применении концепций ФП по мере того, как вы осваиваете их. По умолчанию используйте принцип YAGNI при принятии решения о том, поможет ли определённый шаблон или абстракция сделать эту часть кода более читабельной или они просто добавляют умную изощренность, которая (пока) не оправдана.
 
-> Reminder, any extensibility point that’s never used isn’t just wasted effort, it’s likely to also get in your way as well
+> Напоминаю, что любая точка расширения, которая никогда не использовалась, - это не просто напрасная трата усилий, она, скорее всего, также встанет у вас на пути.
 >
 > Jeremy D. Miller @jeremydmiller 2/20/15
 >
 > https://twitter.com/jeremydmiller/status/568797862441586688
 
-Remember, every single line of code you write has a reader cost associated with it. That reader may be another team member, or even your future self. Neither of those readers will be impressed with overly clever, unnecessary sophistication just to show off your FP prowess.
+Помните, что каждая отдельная строка кода, которую вы пишете, связана с затратами на её чтение. Читатель может быть другим членом команды или даже вы в будущем. Ни один из этих читателей не будет впечатлён чрезмерно заумным, ненужным изощрением только для того, чтобы продемонстрировать ваше мастерство ФП. 
 
-The best code is the code that is most readable in the future because it strikes exactly the right balance between what it can/should be (idealism) and what it must be (pragmatism).
+Лучший код - это самый читабельный код в будущем, потому что он обеспечивает точно правильный баланс между тем, каким он может быть (идеализм), и тем, каким он должен быть (прагматизм).
 
-## Resources
+## Ресурсы
 
-I have drawn on a great many different resources to be able to compose this text. I believe you, too, may benefit from them, so I wanted to take a moment to point them out.
+Я привлёк огромное количество различных ресурсов, чтобы написать эту книгу. Я верю, что они вам тоже могут пригодиться, поэтому я хотел бы воспользоваться моментом, чтобы указать на них.
 
-### Books
+### Книги
 
-Some FP/JavaScript books that you should definitely read:
+Некоторые книги по ФП/JavaScript, которые вам точно нужно прочитать:
 
 * [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch1.html) by [Brian Lonsdorf](https://twitter.com/drboolean)
 * [JavaScript Allongé](https://leanpub.com/javascriptallongesix) by [Reg Braithwaite](https://twitter.com/raganwald)
 * [Functional JavaScript](http://shop.oreilly.com/product/0636920028857.do) by [Michael Fogus](https://twitter.com/fogus)
 
-### Blogs/sites
+### Блоги/сайты
 
-Some other authors and content you should check out:
+Другие авторы и материалы, с которыми вам следует ознакомиться:
 
 * [Fun Fun Function Videos](https://www.youtube.com/watch?v=BMUiFMZr7vk) by [Mattias P Johansson](https://twitter.com/mpjme)
 * [Awesome FP JS](https://github.com/stoeffel/awesome-fp-js)
@@ -233,30 +233,31 @@ Some other authors and content you should check out:
 * [Functional Programming Jargon](https://github.com/hemanth/functional-programming-jargon#functional-programming-jargon)
 * [Functional Programming Exercises](https://github.com/InceptionCode/Functional-Programming-Exercises)
 
-### Libraries
+### Библиотеки
 
-The code snippets in this book largely do not rely on libraries. Each operation that we discover, we'll derive how to implement it in standalone, plain ol' JavaScript. However, as you begin to build more of your real code with FP, you'll soon want a library to provide optimized and highly reliable versions of these commonly accepted utilities.
+Фрагменты кода в этой книге в основном не опираются на библиотеки. Для каждой изучаемой операции, мы узнаем, как реализовать её самостоятельно, в старом добром JavaScript. Однако, когда вы начнёте писать больше своего реального кода с помощью ФП, вам скоро понадобится библиотека, предоставляющая оптимизированные и высоконадёжные версии этих общепринятых утилит.
 
-By the way, you need to check the documentation for the library functions you use to ensure you know how they work. There will be a lot of similarities in many of them to the code we build on in this text, but there will undoubtedly be some differences, even between popular libraries.
+Помимо прочего, вам нужно будет проверить документацию библитотеки, функции которой вы используете, чтобы быть уверенным как они работают. Во многих из них будет много общего с кодом, на который мы основываемся в этой книге, но, несомненно, будут некоторые различия, даже среди популярных библиотек.
 
-Here are a few popular FP libraries for JavaScript that are a great place to start your exploration with:
+Вот, некоторые популярные ФП библиотеки для JavaScript, с которых можно начать своё исследование:
 
 * [Ramda](http://ramdajs.com)
 * [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide)
 * [functional.js](http://functionaljs.com/)
 * [Immutable.js](https://github.com/facebook/immutable-js)
 
-[Appendix C takes a deeper look at these libraries](apC.md/#stuff-to-investigate) and others.
+[В приложении C более подробно рассматриваются указанные библиотеки](apC.md/#stuff-to-investigate) и другие.
 
-## Summary
+## Заключение
 
-You may have a variety of reasons for starting to read this book, and different expectations of what you'll get out of it. This chapter has explained why I want you to read the book and what I want you to get out of the journey. It also helps you articulate to others (like your fellow developers) why they should come on the journey with you!
+У вас могут быть разнообразные причины для прочтения этой книги, и разные ожидания того, чему вы можете научиться с ней. В этой главе сказано, почему я хочу, чтобы вы прочитали эту книгу и, что я хочу, чтобы вы извлекли из этого пути. Она также поможет вам объяснить другим (например, вашим коллегам-разработчикам), почему они должны отправиться в этот путь вместе с вами!
 
-Functional programming is about writing code that is based on proven principles so we can gain a level of confidence and trust over the code we write and read. We shouldn't be content to write code that we anxiously *hope* works, and then abruptly breathe a sigh of relief when the test suite passes. We should *know* what it will do before we run it, and we should be absolutely confident that we've communicated all these ideas in our code for the benefit of other readers (including our future selves).
+Функциональное программирование - это написание кода, основанного на проверенных принципах, которые дают нам определённый уровень уверенности в коде, который мы пишем и читаем. Мы не должны довольствоваться написанием кода, который, как мы со страхом *надеемся*, работает, а затем внезапно вздыхать с облегчением, когда все тесты пройдены. Мы должны *знать*, что он будет делать, прежде чем мы его запустим, и мы должны быть абсолютно уверены, что мы отразили все эти идеи в нашем коде на благо других читателей (включая нас самих в будущем).
 
-This is the heart of Functional-Light JavaScript. The goal is to learn to effectively communicate with our code but not have to suffocate under mountains of notation or terminology to get there.
+Это ядро функционально-лёгкого программирования JavaScript. Целью является то, чтобы научиться эффективно взаимодействовать с нашим кодом, но не задыхаться под горами обозначений или терминологии, чтобы добраться туда.
 
-The journey to learning functional programming starts with deeply understanding the nature of what a function is. That's what we tackle in the next chapter.
+Путь к изучению функционального программирования начинается с глубокого понимания природы того, что такое функция. Именно этим мы займёмся в следующей главе.
+
 
 ----
 
