@@ -1,13 +1,13 @@
-# Functional-Light JavaScript
-# Chapter 2: The Nature Of Functions
+# Функционально-Лёгкий JavaScript
+# Глава 2: Природа Функций
 
-Functional Programming is **not just programming with the `function` keyword.** Oh, if only it was that easy -- I could end the book right here! Nevertheless, functions really *are* at the center of FP. And it's how we use functions that makes our code *functional*.
+Функциональное программирование - это **не только программирование с ключевым словом `функция`**. Ох, если бы это было так просто - я мог бы закончить эту книгу прямо здесь! Тем не менее, функции действительно в центре ФП. И как мы используем функции - это то, что делает наш код *функциональным*. 
 
-But how sure are you that you know what *function* really means?
+Но насколько вы уверены, что знаете, что на самом деле означает *функция*?
 
-In this chapter, we're going to lay the groundwork for the rest of the book by exploring all the foundational aspects of functions. Actually, this is a review of all the things even a non-FP programmer should know about functions. But certainly if we want to get the most out of FP concepts, it's essential we *know* functions inside and out.
+В этой главе, мы заложим основы для всей книги, исследуя все фундаментальные аспекты функций. На самом деле, это обзор всего, что должны знать о функциях даже не ФП программисты. Несомненно, если мы хотим извлечь максимальную пользу из концептов ФП, нам очень важно знать функции вдоль и поперёк. 
 
-Brace yourself, because there's a lot more to the function than you may have realized.
+Приготовьтесь, потому что в функции заложено гораздо больше, чем вы, возможно, представляли.
 
 ## What Is a Function?
 
