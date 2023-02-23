@@ -1,43 +1,43 @@
-# Functional-Light JavaScript
-# Chapter 2: The Nature Of Functions
+# Функционально-Лёгкий JavaScript
+# Глава 2: Природа Функций
 
-Functional Programming is **not just programming with the `function` keyword.** Oh, if only it was that easy -- I could end the book right here! Nevertheless, functions really *are* at the center of FP. And it's how we use functions that makes our code *functional*.
+Функциональное программирование - это **не только программирование с ключевым словом `функция`**. Ох, если бы это было так просто - я мог бы закончить эту книгу прямо здесь! Тем не менее, функции действительно в центре ФП. И как мы используем функции - это то, что делает наш код *функциональным*. 
 
-But how sure are you that you know what *function* really means?
+Но насколько вы уверены, что знаете, что на самом деле означает *функция*?
 
-In this chapter, we're going to lay the groundwork for the rest of the book by exploring all the foundational aspects of functions. Actually, this is a review of all the things even a non-FP programmer should know about functions. But certainly if we want to get the most out of FP concepts, it's essential we *know* functions inside and out.
+В этой главе, мы заложим основы для всей книги, исследуя все фундаментальные аспекты функций. На самом деле, это обзор всего, что должны знать о функциях даже не ФП программисты. Несомненно, если мы хотим извлечь максимальную пользу из концептов ФП, нам очень важно знать функции вдоль и поперёк. 
 
-Brace yourself, because there's a lot more to the function than you may have realized.
+Приготовьтесь, потому что в функции заложено гораздо больше, чем вы, возможно, представляли.
 
-## What Is a Function?
+## Что Такое Функция?
 
-The question "What is a function?" superficially seems to have an obvious answer: a function is a collection of code that can be executed one or more times.
+На вопрос "Что такое функция?" на первый взгляд ответ кажется очевидным: функция - это набор кода, который может быть выполнен один или несколько раз.
 
-While this definition is reasonable, it's missing some very important essence that is the core of a *function* as it applies to FP. So let's dig below the surface to understand functions more completely.
+В то время как, это определение оправдано, ему не хватает какой-то очень важной сущности, которая является ядром *функции* применительно к ФП. Итак, давайте копнём глубже, чтобы лучше разобраться в функциях.
 
-### Brief Math Review
+### Краткий Математический Обзор
 
-I know I've promised we'd stay away from math as much as possible, but bear with me for a moment as we quickly observe some fundamental things about functions and graphs from algebra before we proceed.
+Я знаю, что обещал держаться подальше от математики насколько это возможно, но потерпите немного, поскольку мы быстро рассмотрим некоторые фундаментальные вещи о функциях и графиках из алгебры, прежде чем продолжим.
 
-Do you remember learning anything about `f(x)` back in school? What about the equation `y = f(x)`?
+Вы помните, как учили что-нибудь о `f(x)` ещё в школе? Как насчёт уравнения `y = f(x)`?
 
-Let's say an equation is defined like this: <code>f(x) = 2x<sup>2</sup> + 3</code>. What does that mean? What does it mean to graph that equation? Here's the graph:
+Давайте представим, что уравнение определено вот так: <code>f(x) = 2x<sup>2</sup> + 3</code>. Что это значит? Как это уравнение будет выглядеть на графике? Вот график: 
 
 <p align="center">
     <img src="images/fig1.png" width="40%">
 </p>
 
-What you can notice is that for any value of `x`, say `2`, if you plug it into the equation, you get `11`. What is `11`, though? It's the *return value* of the `f(x)` function, which earlier we said represents a `y` value.
+Вы можете заметить, что для любого значения `x`, скажем, `2`, если вы добавите его в уравнение, вы получите `11`. Хотя что такое `11`? Это *возвращаемое значение* функции `f(x)`, которая, как мы говорили ранее, представляет значение `y`.
 
-In other words, we can choose to interpret the input and output values as a point at `(2,11)` on that curve in the graph. And for every value of `x` we plug in, we get another `y` value that pairs with it as a coordinate for a point. Another is `(0,3)`, and another is `(-1,5)`. Put all those points together, and you have the graph of that parabolic curve as shown here.
+Другими словами, мы можем толковать входные и выходные значения как точку `(2,11)` на этой кривой графика. И для каждого значения `x`, которое мы подключаем, мы получаем другое значение `y`, которое соединяется с ним в качестве координаты точки. Другое - `(0,3)`, а другое - `(-1,5)`. Сложите все эти точки вместе, и у вас получится график этой параболы, как показано здесь.
 
-So what's any of this got to do with FP?
+Так какое отношнение всё это имеет к ФП?
 
-In math, a function always takes input(s), and always gives an output. A term you'll often hear around FP is "morphism"; this is a fancy way of describing a set of values that maps to another set of values, like the inputs of a function related to the outputs of that function.
+В математике функция всегда берёт входные значения и всегда возвращает выходные значения. Термин, который вы часто будете слышать вокруг ФП, - это "морфизм"; это причудливый способ описания  набора значений, который сопоставляется с другим набором значений, например, входы функции, связанные с выходами этой функции.
 
-In algebraic math, those inputs and outputs are often interpreted as components of coordinates to be graphed. In our programs, however, we can define functions with all sorts of input(s) and output(s), even though they'll rarely be interpreted as a visually plotted curve on a graph.
+В алгебрe эти входные и выходные данные часто толкуются как составные координат, подлежащих отображению на графике. Однако в наших программах мы можем определять функции со всеми видами входных и выходных данных, хотя они редко будут интерпретироваться как визуально построенная кривая на графике.
 
-### Function vs Procedure
+### Функция vs Процедура
 
 So why all the talk of math and graphs? Because essentially Functional Programming is about embracing using functions as *functions* in this mathematical sense.
 
