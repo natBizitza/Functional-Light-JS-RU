@@ -37,25 +37,25 @@
 
 В алгебрe эти входные и выходные данные часто толкуются как составные координат, подлежащих отображению на графике. Однако в наших программах мы можем определять функции со всеми видами входных и выходных данных, хотя они редко будут интерпретироваться как визуально построенная кривая на графике.
 
-### Функция vs Процедура
+### Функция vs Процедуры
 
-So why all the talk of math and graphs? Because essentially Functional Programming is about embracing using functions as *functions* in this mathematical sense.
+Так к чему весь этот разговор о математике и графиках? Потому что, по сути, Функциональное Программирование заключается в том, чтобы использовать функции как *функции* в этом математическом смысле.
 
-You may be more accustomed to thinking of functions as procedures. What's the difference? A procedure is an arbitrary collection of functionality. It may have inputs, it may not. It may have an output (`return` value), it may not.
+Может быть вам привычнее думать о функциях как о процедурах. В чём разница? Процедура - это произвольный набор функциональных возможностей. У неё может быть входные данные, а может и нет.У неё может быть вывод (`return` значение), а может и нет.
 
-A function takes input(s) and definitely always has a `return` value.
+Функция принимает входные данные и, безусловно, всегда имеет возвращаемое значение (`return`).
 
-If you plan to do Functional Programming, **you should be using functions as much as possible**, and trying to avoid procedures wherever possible. All your `function`s should take input(s) and return output(s).
+Если вы планируете заниматься Функциональным Программированием, **вы должны использовать функции как можно чаще**, и пытаться избегать процедуры, где это возможно. Все ваши `функции` должны брать входные данные и возвращать выводные.
 
-Why? The answer to that will have many levels of meaning that we'll uncover throughout this book.
+Почему? Ответ на этот вопрос будет иметь много значений, которые мы будем раскрывать на протяжении всей этой книги.
 
-## Function Input
+## Ввод Функции
 
-So far, we can conclude that functions must expect input. But let's dig into how function inputs work.
+Пока что мы можем сделать вывод, что функции должны ожидать ввода. Но давайте углубимся в то, как работают входные данные функций.
 
-You sometimes hear people refer to these inputs as "arguments" and sometimes as "parameters". So what's that all about?
+Иногда вы слышите, как люди называют эти входные данные "аргументами", а иногда и "параметрами". Так что же всё это значит?
 
-*Arguments* are the values you pass in, and *parameters* are the named variables inside the function that receive those passed-in values. Example:
+*Аргументы* - это значения, которые вы передаёте, а *параметры* - это именованные переменные внутри функции, которые получают эти переданные значения. Пример:
 
 ```js
 function foo(x,y) {
@@ -67,15 +67,15 @@ var a = 3;
 foo( a, a * 2 );
 ```
 
-`a` and `a * 2` (actually, the result of `a * 2`, which is `6`) are the *arguments* to the `foo(..)` call. `x` and `y` are the *parameters* that receive the argument values (`3` and `6`, respectively).
+`a` и `a * 2` (на самом деле, результат `a * 2`, который равен `6`) являются *аргументами* для вызова `foo(..)`. `x` и `y` являются *параметрами*, которые получают значения аргументов (`3` и `6`, соответвственно).
 
-**Note:** In JavaScript, there's no requirement that the number of *arguments* matches the number of *parameters*. If you pass more *arguments* than you have declared *parameters* to receive them, the values pass in just fine untouched. These values can be accessed in a few different ways, including the old-school `arguments` object you may have heard of before. If you pass fewer *arguments* than the declared *parameters*, each unmatched parameter is treated as an "undefined" variable, meaning it's present and available in the scope of the function, but just starts out with the empty `undefined` value.
+**Примечание:** В JavaScript нет требования, чтобы количество *аргументов* соответствовало количеству *параметров*. Если вы передаёте больше *аргументов*, чем объявлено *параметров* для их получения, значения без проблем передаются нетронутыми. Доступ к этим значениям можно получить несколькими различными способами, включая старый-добрый объект `arguments`, о котором вы, возможно, слышали раньше. Если вы передаёте меньше *аргументов*, чем объявленных *параметров*, каждый несовпадающий параметр обрабатывается как "undefined" (неопределённая) переменная, что означает, что он присутствует и доступен в области видимости функции, но просто начинается с пустого значения `undefined`.  
 
-### Defaulting Parameters
+### Параметры по Умолчанию
 
-As of ES6, parameters can declare *default values*. In the case where the argument for that parameter is not passed, or it's passed the value `undefined`, the default assignment expression is substituted.
+Начиная с ES6, параметры могут объявлять *значения по умолчанию*. В случае, когда аргумент для параметра не передан или ему передано значение `undefined`, он заменяется выражением присвоенным по умолчанию.
 
-Consider:
+Рассмотрите:
 
 ```js
 function foo(x = 3) {
@@ -87,24 +87,22 @@ foo( undefined );       // 3
 foo( null );            // null
 foo( 0 );               // 0
 ```
+Всегда полезно подумать о любых случаях по умолчанию, которые могут улучшить использование ваших функций. Однако параметры по умолчанию могут привести к большей сложности с точки зрения чтения и понимания вариантов вызова функции. Будьте благоразумны в том, насколько вы полагаетесь на эту функциональность.
 
-It's always a good practice to think about any default cases that can aid the usability of your functions. However, defaulting parameters can lead to more complexity in terms of reading and understanding the variations of how a function is called. Be judicious in how much you rely on this feature.
+### Подсчёт Входных Данных
 
-### Counting Inputs
-
-The number of arguments a function "expects" -- how many arguments you'll likely want to pass to it -- is determined by the number of parameters that are declared:
+Число аргументов, которые "ожидает" функция -- сколько аргументов вы, вероятно, захотите передать ей -- определено числом объявленных параметров:  
 
 ```js
 function foo(x,y,z) {
     // ..
 }
 ```
+`foo(..)` *ожидает* три аргумента, потому что у неё три объявленных параметра. У этого счёта есть особый термин: арность. Арность - это количество параметров, объявленных в функции. Арность `foo(..)` это `3`.
 
-`foo(..)` *expects* three arguments, because it has three declared parameters. This count has a special term: arity. Arity is the number of parameters in a function declaration. The arity of `foo(..)` is `3`.
+Кроме того, функция с арностью 1 также называется "унарной", функция с арностью 2 также называется "двоичной" (бинарной), а функция с арностью 3 или выше называется "n-арной".
 
-Furthermore, a function with arity 1 is also called "unary", a function with arity 2 is also called "binary", and a function with arity 3 or higher is called "n-ary".
-
-You may wish to inspect a function reference during the runtime of a program to determine its arity. This can be done with the `length` property of that function reference:
+Возможно, вы захотите проверить ссылку на функцию во время выполнения программы, чтобы определить её арность. Это можно сделать с помощью свойства `length` (длина) этой ссылки на функцию:
 
 ```js
 function foo(x,y,z) {
@@ -114,9 +112,9 @@ function foo(x,y,z) {
 foo.length;             // 3
 ```
 
-One reason for determining the arity during execution would be if a piece of code received a function reference from multiple sources, and sent different values depending on the arity of each.
+Одной из причин определения арности во время выполнения было бы, если бы фрагмент кода получил ссылку на функцию из нескольких источников и отправил разные значения в зависимости от арности каждого из них.
 
-For example, imagine a case where an `fn` function reference could expect one, two, or three arguments, but you always want to just pass a variable `x` in the last position:
+Например, представьте случай где `fn` ссылка на функцию может ожидать один, два, или три аргумента, но вы всегда хотите просто передать переменную `x` в последней позиции:
 
 ```js
 // `fn` is set to some function reference
