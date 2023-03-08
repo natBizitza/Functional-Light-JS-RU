@@ -131,9 +131,9 @@ else if (fn.length == 3) {
 }
 ```
 
-**Tip:** The `length` property of a function is read-only and it's determined at the time you declare the function. It should be thought of as essentially a piece of metadata that describes something about the intended usage of the function.
+**Совет:** Свойство функции `length` (длина) доступно только для чтения, и оно определяется в момент объявления функции. Его следует рассматривать, по сути, как фрагмент метаданных, который описывает что-то о предполагаемом использовании функции.
 
-One gotcha to be aware of is that certain kinds of parameter list variations can make the `length` property of the function report something different than you might expect:
+Следует иметь в виду, что некоторые виды изменений списка параметров могут привести к тому, что свойство функции `length` сообщит о чём-то отличном от того, что вы могли бы ожидать:
 
 ```js
 function foo(x,y = 2) {
@@ -153,7 +153,7 @@ bar.length;             // 1
 baz.length;             // 1
 ```
 
-What about counting the number of arguments the current function call received? This was once trivial, but now the situation is slightly more complicated. Each function has an `arguments` object (array-like) available that holds a reference to each of the arguments passed in. You can then inspect the `length` property of `arguments` to figure out how many were actually passed:
+Как насчёт подсчёта количества аргументов, полученных текущим вызовом функции? Когда-то это было тривиально, но сейчас ситуация немного сложнее. У каждой функции есть доступный объект `arguments` (аргументы) (подобный массиву), который содержит ссылку на каждый из переданных аргументов. Вы можете исследовать свойство `length` (длины) `arguments` (аргументов), чтобы выяснить, сколько их было на самом деле передано:
 
 ```js
 function foo(x,y,z) {
@@ -163,11 +163,11 @@ function foo(x,y,z) {
 foo( 3, 4 );    // 2
 ```
 
-As of ES5 (and strict mode, specifically), `arguments` is considered by some to be sort of deprecated; many avoid using it if possible. In JS, we "never" break backward compatibility no matter how helpful that may be for future progress, so `arguments` will never be removed. But it's now commonly suggested that you avoid using it whenever possible.
+Начиная с ES5 (в особенности в строгом режиме - strict mode), некоторые считают `arguments` своего рода устаревшим объектом; многие по возможности избегают его использования. В JS мы "никогда" не нарушаем обратную совместимость, независимо от того, насколько это может быть полезно для будущего прогресса, поэтому `arguments` никогда не будут удалены. Однако сейчас повсеместно рекомендуется избегать его использования, когда это возможно.
 
-However, I suggest that `arguments.length`, and only that, is OK to keep using for those cases where you need to care about the passed number of arguments. A future version of JS might possibly add a feature that offers the ability to determine the number of arguments passed without consulting `arguments.length`; if that happens, then we can fully drop usage of `arguments`!
+Несмотря на это, я предлагаю, что `arguments.length`, и только это, можно продолжать использовать в случаях, когда вам важно количество отправленных аргументов. Будущая версия JS, возможно, добавит функцию, которая позволит определить количество аргментов, без использования `arguments.length`; если это случится, тогда мы можем полностью перестать использовать `arguments`!   
 
-Be careful: **never** access arguments positionally, like `arguments[1]`. Stick to `arguments.length` only, and only if you must.
+Будьте осторожны: **никогда** не запрашивайте доступ к аргументам позиционно, например, `arguments[1]`. Придерживайтесь только `arguments.length`, и только в случаях, когда вы должны.
 
 Except, how will you access an argument that was passed in a position beyond the declared parameters? I'll answer that in a moment; but first, take a step back and ask yourself, "Why would I want to do that?" Seriously. Think about that closely for a minute.
 
