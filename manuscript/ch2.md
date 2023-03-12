@@ -201,11 +201,11 @@ foo( 1, 2, 3, 4 );      // 1 2 3 [ 4 ]
 foo( 1, 2, 3, 4, 5 );   // 1 2 3 [ 4, 5 ]
 ```
 
-So, if you *really* want to design a function that can account for an arbitrary number of arguments to be passed in, use `...args` (or whatever name you like) on the end. Now, you'll have a real, non-deprecated, non-yucky array to access those argument values from.
+Итак, если вы *действительно* хотите создать функцию, которая может учитывать произвольное количество передаваемых аргументов, используйте `...args` (или дайте ему другое имя, которое вам нравится) в конце. Теперь у вас будет реальный, не устаревший, не вызывающий отвращения массив для доступа к этим значениям аргументов.
 
-Just pay attention to the fact that the value `4` is at position `0` of that `args`, not position `3`. And its `length` value won't include those three `1`, `2`, and `3` values. `...args` gathers everything else, not including the `x`, `y`, and `z`.
+Просто обратите внимание, что значение `4` на позиции `0` `args`, не позиции `3`. И его `length` значение не будет включать те три `1`, `2`, и `3` значения. `...args` собирает всё остальное, что не включает `x`, `y`, и `z`.
 
-You *can* use the `...` operator in the parameter list even if there's no other formal parameters declared:
+Вы *можете* использовать оператор `...` в списке параметров, даже если там не объявлены другие формальные параметры:
 
 ```js
 function foo(...args) {
@@ -213,9 +213,10 @@ function foo(...args) {
 }
 ```
 
-Now `args` will be the full array of arguments, whatever they are, and you can use `args.length` to know exactly how many arguments have been passed in. And you're safe to use `args[1]` or `args[317]` if you so choose. Please don't pass in 318 arguments, though.
+Теперь `args` будет полным массивом аргументов, какими бы они не были, и вы можете использовать `args.length`, чтобы точно знать, сколько аргументов было передано. И вы без проблем можете использовать `args[1]` или `args[317]`, если вы так решите. Только пожалуйста не передавайте 318 агументов.
 
-### Arrays of Arguments
+
+### Массивы аргументов
 
 What if you wanted to pass along an array of values as the arguments to a function call?
 
